@@ -1,0 +1,17 @@
+git:
+  image: kontena/git-builder:latest
+  secrets:
+    - secret: BUILDER_AUTHORIZED_KEYS
+      name: AUTHORIZED_KEYS
+      type: env
+    - secret: BUILDER_USERNAME
+      name: USERNAME
+      type: env
+    - secret: BUILDER_EMAIL
+      name: USERNAME
+      type: env
+    - secret: BUILDER_PASSWORD
+      name: PASSWORD
+      type: env
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
