@@ -28,7 +28,8 @@ Where:
 - `KONTENA_VERSION` (optional) is the kontena-cli version used by builder
 - `USER` (optional) is the username to use to log into the registry using `docker login`
 - `EMAIL` (optional) is the email to use to log into the registry using `docker login`
-- `PASSWORD` (optional)is the password to use to log into the registry using `docker login`
+- `PASSWORD` (optional) is the password to use to log into the registry using `docker login`
+- `REGISTRY` (optional) is the registry url to login with `docker login`. Defaults to `https://index.docker.io/v1/`
 
 ## Usage
 
