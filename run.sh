@@ -32,8 +32,9 @@ fi
 
 if [ -n "$USERNAME" ] && [ -n "$EMAIL" ] && [ -n "$PASSWORD" ]; then
   echo "=> Logging in to docker registry $REGISTRY"
-  docker login -u $USERNAME -e $EMAIL -p $PASSWORD $REGISTRY > /dev/null
-  mv /root/.docker/config.json /home/git/.docker/
+  docker login -u $USERNAME -e $EMAIL -p "$PASSWORD" $REGISTRY > /dev/null
+  mkdir -p /home/git/.docker
+  mv /root/.docker/config.json /home/git/.docker/config.json
   chown git:git -R /home/git/.docker/
 fi
 

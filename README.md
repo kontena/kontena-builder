@@ -4,10 +4,11 @@ A docker image that builds and pushes Kontena apps (docker images) via git push.
 
 ## Install
 
-Write ssh public key to Kontena Vault:
+Write ssh public key and registry password to Kontena Vault:
 
 ```
 $ kontena vault write BUILDER_AUTHORIZED_KEYS "$(cat ~/.ssh/id_rsa.pub)"
+$ kontena vault write BUILDER_REGISTRY_PASSWORD "password"
 ```
 
 Deploy builder service to Kontena Grid:
@@ -15,7 +16,7 @@ Deploy builder service to Kontena Grid:
 ```
 $ kontena service create \
   -e KONTENA_VERSION=0.11.7
-  -e USER=username -e EMAIL=not@val.id -e REGISTRY=https://index.docker.io/ \
+  -e USERNAME=username -e EMAIL=not@val.id -e REGISTRY=https://index.docker.io/ \
   --secret BUILDER_REGISTRY_PASSWORD:PASSWORD:env \
   --secret BUILDER_AUTHORIZED_KEYS:AUTHORIZED_KEYS:env \
   -v /var/run/docker.sock:/var/run/docker.sock builder kontena/git-builder:latest
@@ -26,7 +27,7 @@ Where:
 
 - `AUTHORIZED_KEYS` is the ssh public used with `git push`
 - `KONTENA_VERSION` (optional) is the kontena-cli version used by builder
-- `USER` (optional) is the username to use to log into the registry using `docker login`
+- `USERNAME` (optional) is the username to use to log into the registry using `docker login`
 - `EMAIL` (optional) is the email to use to log into the registry using `docker login`
 - `PASSWORD` (optional) is the password to use to log into the registry using `docker login`
 - `REGISTRY` (optional) is the registry url to login with `docker login`. Defaults to `https://index.docker.io/v1/`
