@@ -38,4 +38,6 @@ if [ -n "$USERNAME" ] && [ -n "$EMAIL" ] && [ -n "$PASSWORD" ]; then
   chown git:git -R /home/git/.docker/
 fi
 
+echo "Builder started serving."
+
 exec /usr/sbin/sshd -D
