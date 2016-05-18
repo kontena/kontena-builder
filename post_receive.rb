@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+STDOUT.sync = true
+
 # Read STDIN (Format: "from_commit to_commit branch_name")
 from, to, branch = ARGF.read.split " "
 
