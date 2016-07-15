@@ -17,8 +17,8 @@ unless Dir.exist?("./#{repo_name}")
   %x(git init --bare #{repo_name})
 end
 
-post_receive_path = "./#{repo_name}/hooks/post-receive"
-File.write(post_receive_path, File.read('post-receive'))
-File.chmod(0755, post_receive_path)
+pre_receive_path = "./#{repo_name}/hooks/pre-receive"
+File.write(pre_receive_path, File.read('pre-receive'))
+File.chmod(0755, pre_receive_path)
 
 exec 'git', 'shell', '-c', command

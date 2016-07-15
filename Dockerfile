@@ -16,7 +16,7 @@ RUN chmod +sx /usr/bin/docker && \
     gem install --no-ri --no-doc kontena-cli
 ENV GIT_CLONE_OPTS="--recursive"
 ADD gitserve.rb /usr/bin/gitserve
-ADD post_receive.rb /home/git/post-receive
+ADD pre_receive.rb /home/git/pre-receive
 ADD run.sh /
 
 VOLUME /home/git
